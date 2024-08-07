@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const TodoStyle = styled.div<{
-  completed: boolean;
-  isEdit: boolean;
+  $completed: boolean;
+  $edit: boolean;
 }>`
   .todo-container {
     background: #d2eed2;
@@ -48,26 +48,26 @@ export const TodoStyle = styled.div<{
     }
     .edit {
       background-color: #3639ee;
-      cursor: ${(props) => (props.completed ? "not-allowed" : "pointer")};
+      cursor: ${(props) => (props.$completed ? "not-allowed" : "pointer")};
 
-      opacity: ${(props) => (props.completed ? "0.5" : "")};
+      opacity: ${(props) => (props.$completed ? "0.5" : "")};
 
       &:hover {
-        background-color: ${(props) => (props.completed ? "   #1317ef;" : "")};
+        background-color: ${(props) => (props.$completed ? "   #1317ef;" : "")};
       }
     }
 
     .todo-input {
-      text-decoration: ${(props) => (props.completed ? "line-through;" : "")};
+      text-decoration: ${(props) => (props.$completed ? "line-through;" : "")};
       font-size: 18px;
       min-width: 390px;
       padding: 8px;
       border: none;
       background-color: transparent;
-
       &:focus {
-        outline: ${(props) => (props.isEdit ? "" : "none")};
+        outline: ${(props) => (props.$edit ? "" : "none")};
       }
+
       @media (max-width: 600px) {
         min-width: auto;
         width: 100%;

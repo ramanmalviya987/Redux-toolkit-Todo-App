@@ -7,6 +7,11 @@ export interface TodoStates {
     completed: boolean;
   }[];
 }
+export interface Todo {
+  id: string;
+  text: string;
+  completed: boolean;
+}
 
 const initialState: TodoStates = {
   todo: [],
@@ -16,6 +21,9 @@ export const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
+    addTodos: (state, action: PayloadAction<Todo[]>) => {
+      state.todo.push(...action.payload);
+    },
     addTodo: (
       state,
       action: PayloadAction<{ text: string; completed: boolean }>
@@ -52,6 +60,6 @@ export const todosSlice = createSlice({
   },
 });
 
-export const { addTodo, completedTodo, editTodo, deleteTodo } =
+export const { addTodo, addTodos, completedTodo, editTodo, deleteTodo } =
   todosSlice.actions;
 export default todosSlice.reducer;
